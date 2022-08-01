@@ -1,9 +1,9 @@
 import React from 'react'
 
-const transactionList = () => {
+const TransactionList = () => {
   return (
-    <div>transactionList</div>
+    <div>TransactionList</div>
   )
 }
 
-export default transactionList
+export default TransactionList

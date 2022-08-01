@@ -1,9 +1,9 @@
 import React from 'react'
 
-const transactionCard = () => {
+const TransactionCard = () => {
   return (
     <div>transactionCard</div>
   )
 }
 
-export default transactionCard
+export default TransactionCard

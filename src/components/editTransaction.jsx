@@ -1,9 +1,9 @@
 import React from 'react'
 
-const editTransaction = () => {
+const EditTransaction = () => {
   return (
     <div>editTransaction</div>
   )
 }
 
-export default editTransaction
+export default EditTransaction
