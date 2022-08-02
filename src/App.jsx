@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Home from "./components/home";
-import Investors from "./components/investors";
-import TransactionForm from "./components/transactionForm";
-import Transactions from "./components/transactions";
+import Home from "./components/Home";
+import Investors from "./components/Investors";
+import TransactionForm from "./components/TransactionForm";
+import Transactions from "./components/Transactions";
 
 const App = () => {
 const [transactions, setTransactions] = useState([])
