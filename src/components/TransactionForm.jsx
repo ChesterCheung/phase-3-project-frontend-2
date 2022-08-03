@@ -1,35 +1,47 @@
 import React, {useState} from 'react'
 
-const TransactionForm = () => {
+const TransactionForm = ({addTransaction}) => {
     const [stock, setStock] = useState([])
-    const [price, setPrice] = useState([])
+    const [stockPrice, setStockPrice] = useState([])
     const [date, setDate] = useState([])
     const [investorName, setInvestorName] = useState([])
 
-    // {
-    //     "id": 3,
-    //     "company_name": "TSLA",
-    //     "price": 600,
-    //     "date": "1/1/22",
-    //     "investor_id": 6,
-    //     "investor": {
-    //         "id": 6,
-    //         "name": "Melinda"
-    //     }
-    // }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
+    const params = { investor: {
+            name: investorName
+          },
+          stock_transactions: {
+            company_name: stock,
+            price: stockPrice,
+            date: date
+          }
+        }
+        
+        fetch("http://localhost:9292/stocktransactions",{
+            method: "POST",
+            headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(params)})
+                .then(resp => resp.json())
+                .then (data => addTransaction(data))
+    }
 
   return (
     <div>
         <h1> New Trade</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>Stock</label>
                 <input type="text" name="stock" value={stock} onChange={e => setStock(e.target.value)}/>
             </div>
             <div>
                 <label>Price</label>
-                <input type="integer" name="price" value={price} onChange={e => setPrice(e.target.value)}/>
+                <input type="integer" name="stockPrice" value={stockPrice} onChange={e => setStockPrice(e.target.value)}/>
             </div>
             <div>
                 <label>Date</label>
@@ -39,6 +51,7 @@ const TransactionForm = () => {
                 <label>Investor Name</label>
                 <input type="text" name="investorName" value={investorName} onChange={e => setInvestorName(e.target.value)}/>
             </div>
+            <input type="submit" value="Add Transaction" />
         </form>
     </div>
   )
