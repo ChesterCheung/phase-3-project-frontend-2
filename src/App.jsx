@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Investors from "./components/Investors";
 import TransactionForm from "./components/TransactionForm";
-import TransactionList from "./components/Transactions";
+import TransactionList from "./components/TransactionList";
 
 const App = () => {
 const [transactions, setTransactions] = useState([])
