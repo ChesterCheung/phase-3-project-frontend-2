@@ -9,7 +9,6 @@ const NavBar = () => {
           <li><Link to="/"> Home </Link></li>
           <li><Link to="/transactions"> List Transactions </Link></li>
           <li><Link to="/transactions/new"> Create Transaction </Link></li>
-          <li><Link to="/investors"> Investors </Link></li>
         </ul>
       </nav>
     </div>
