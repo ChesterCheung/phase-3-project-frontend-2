@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 
-const TransactionCard = ( {transaction} ) => {
+const TransactionCard = ( {transaction, investor} ) => {
     const [isEditing, setIsEditing] = useState(false)
 
   return (
     <div>
       <li style={{ listStyleType: "none" }}>
-        <p>
-            Stock:{transaction.company_name} - Price: {transaction.price} - Date: {transaction.date}
-        </p>
+        <p>Stock:{transaction.company_name} - Price: {transaction.price} - Date: {transaction.date}</p>
+        { transaction.investor ? <p><em>From: <Link to={`/investors/${transaction.investor.id}`}>{transaction.investor.name}</Link></em></p> : <p><em>By: <Link to={`/investors/${investor.id}`}>{ investor.name}</Link></em></p>}
       </li>
     </div>
   )
@@ -16,4 +16,3 @@ const TransactionCard = ( {transaction} ) => {
 
 export default TransactionCard
 
-// { blog.author ? <p><em>By: <Link to={`/authors/${blog.author.id}`}>{ blog.author.name}</Link></em></p> : <p><em>By: <Link to={`/authors/${author.id}`}>{ author.name}</Link></em></p>}
