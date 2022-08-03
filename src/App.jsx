@@ -15,7 +15,8 @@ const [transactions, setTransactions] = useState([])
     .then(data => setTransactions(data))
   },[])
 
-
+const addTransaction = (transaction) =>
+  setTransactions([...transactions, transaction])
   return (
     <Router>
       <NavBar />
@@ -23,7 +24,7 @@ const [transactions, setTransactions] = useState([])
         <Route path="/" element={<Home />}/>
         <Route path="/investors/:id" element={<Investors />}/>
         <Route path="/transactions" element={<TransactionList transactions={transactions} />}/>
-        <Route path="/transactions/new" element={<TransactionForm />}/>
+        <Route path="/transactions/new" element={<TransactionForm addTransaction={addTransaction} />}/>
       </Routes>
     </Router>
   );
