@@ -6,3 +6,8 @@ npm
 node
 
 ### How to use
+
+
+
+#####
+Check transaction card to see if you need the second part of linked name

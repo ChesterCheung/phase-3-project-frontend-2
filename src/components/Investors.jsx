@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import TransactionCard from './TransactionCard'
 
-const Investors = () => {
+const Investors = ({deleteTransaction}) => {
     const [investors, setInvestors] = useState({stock_transactions:[]})
     const {id} = useParams()
 
@@ -12,8 +12,15 @@ const Investors = () => {
             .then(data => setInvestors(data))
     }, [])
 
+    const investorDeleteTransaction = transaction => {
+        setInvestors({
+          ...investors,
+          stock_transactions: investors.stock_transactions.filter(t => t.id !== transaction.id)
+        })
+      }
+
     const transactionCards = investors.stock_transactions.map(transaction => {
-        return <TransactionCard transaction={ transaction } key={ transaction.id } investor={ investors }/>
+        return <TransactionCard investorDeleteTransaction={investorDeleteTransaction} deleteTransaction={deleteTransaction} transaction={ transaction } key={ transaction.id } investor={ investors }/>
     })
 
   return (

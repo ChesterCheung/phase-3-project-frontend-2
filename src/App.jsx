@@ -17,13 +17,29 @@ const [transactions, setTransactions] = useState([])
 
 const addTransaction = (transaction) =>
   setTransactions([...transactions, transaction])
+
+const deleteTransaction = (tran) => {
+  setTransactions(transactions.filter(t => t.id !== tran.id))
+}
+
+const editTransaction = (updatedPrice) =>{
+  const update = transactions.map((transaction) => {
+    if (transaction.id === updatedPrice.id){
+      return updatedPrice
+    } else {
+      return transaction
+    }
+  })
+  setTransactions(update)
+}
+
   return (
     <Router>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/investors/:id" element={<Investors />}/>
-        <Route path="/transactions" element={<TransactionList transactions={transactions} />}/>
+        <Route path="/investors/:id" element={<Investors deleteTransaction={deleteTransaction} />}/>
+        <Route path="/transactions" element={<TransactionList editTransaction={editTransaction} deleteTransaction={deleteTransaction} transactions={transactions} />}/>
         <Route path="/transactions/new" element={<TransactionForm addTransaction={addTransaction} />}/>
       </Routes>
     </Router>
