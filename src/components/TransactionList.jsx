@@ -1,9 +1,9 @@
 import React from 'react'
 import TransactionCard from './TransactionCard'
 
-const TransactionList = ({transactions}) => {
+const TransactionList = ({transactions, deleteTransaction, editTransaction}) => {
 
-  const transactionCards = transactions.map(transaction => <TransactionCard transaction={transaction} key={transaction.id}/> )
+  const transactionCards = transactions.map(transaction => <TransactionCard editTransaction={editTransaction} deleteTransaction={deleteTransaction} transaction={transaction} key={transaction.id}/> )
   return (
     <div>
       <h1>Transaction List</h1>

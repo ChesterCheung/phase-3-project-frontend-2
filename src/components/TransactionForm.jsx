@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TransactionForm = ({addTransaction}) => {
     const [stock, setStock] = useState([])
     const [stockPrice, setStockPrice] = useState([])
     const [date, setDate] = useState([])
     const [investorName, setInvestorName] = useState([])
-
+    const navigate = useNavigate();
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +30,8 @@ const TransactionForm = ({addTransaction}) => {
             body: JSON.stringify(params)})
                 .then(resp => resp.json())
                 .then (data => addTransaction(data))
-    }
+                navigate("/transactions")
+        }
 
   return (
     <div>
