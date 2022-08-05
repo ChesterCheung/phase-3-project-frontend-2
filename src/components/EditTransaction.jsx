@@ -2,11 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 
 const EditTransaction = ({transaction, handleEdit}) => {
-    const {price, id, company_name } = transaction
+    const {price, id} = transaction
     const [updatedPrice, setUpdatedPrice] = useState(price)
 
     const handleEditForm = () => {
-        // e.preventDefault()
             
         fetch("http://localhost:9292/stocktransactions/" + id, {
             method: "PATCH",
