@@ -1,13 +1,16 @@
 # Phase 3 Frontend Build
-This is my frontend react build of my phase 3 project.
+This is my react frontend build for my sinatra backend project. https://github.com/ChesterCheung/phase-3-sinatra-react-project-2
 
 ### Requirements 
-npm
-node
+
+npm v 8.5
+
+node v16.13.2
 
 ### How to use
 
+-Fork and clone Repository
 
+-Npm Install
 
-#####
-Check transaction card to see if you need the second part of linked name
+-Run npm start
